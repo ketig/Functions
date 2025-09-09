@@ -111,3 +111,49 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("🎓 JavaScript ფუნქციები და Scope - მენტორის სესია დაიწყო!");
   console.log("📖 ყველა მაგალითი მზადაა ინტერაქციისთვის");
 });
+
+// ნავიგაციის ფუნქციონალი
+function showSection(sectionId) {
+  // ყველა სექციის დამალვა
+  const sections = document.querySelectorAll(".content-section");
+  sections.forEach((section) => {
+    section.classList.remove("active");
+  });
+
+  // ყველა tab-ის deactivate
+  const tabs = document.querySelectorAll(".nav-tab");
+  tabs.forEach((tab) => {
+    tab.classList.remove("active");
+  });
+
+  // არჩეული სექციის ჩვენება
+  document.getElementById(sectionId).classList.add("active");
+  event.target.classList.add("active");
+
+  // პროგრეს ბარის განახლება
+  updateProgress();
+}
+
+// პროგრეს ბარის განახლება
+function updateProgress() {
+  const activeTab = document.querySelector(".nav-tab.active");
+  const allTabs = document.querySelectorAll(".nav-tab");
+  const activeIndex = Array.from(allTabs).indexOf(activeTab);
+  const progress = ((activeIndex + 1) / allTabs.length) * 100;
+
+  document.getElementById("progressBar").style.width = progress + "%";
+}
+
+// Smooth scrolling ანიმაცია
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute("href"));
+    if (target) {
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  });
+});
