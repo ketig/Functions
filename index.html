@@ -233,33 +233,33 @@ function ბლოკების_ტესტი() {
             <div class="code-container">
                 <div class="code-header">Lexical Scope მაგალითი</div>
                 <pre>
-let გლობალური = "გლობალური მნიშვნელობა";
+let global = "გლობალური მნიშვნელობა";
 
-function გარე_ფუნქცია() {
-    let გარე = "გარე ფუნქციის მნიშვნელობა";
+function outside_function() {
+    let outside = "გარე ფუნქციის მნიშვნელობა";
     
-    function შიდა_ფუნქცია() {
-        let შიდა = "შიდა ფუნქციის მნიშვნელობა";
+    function inside_function() {
+        let inside = "შიდა ფუნქციის მნიშვნელობა";
         
         // ყველა მშობელი scope-ის ხელმისაწვდომია
-        console.log("შიდა:", შიდა);
-        console.log("გარე:", გარე);
-        console.log("გლობალური:", გლობალური);
+        console.log("შიდა:", inside);
+        console.log("გარე:", outside);
+        console.log("გლობალური:", global);
         
-        function ყველაზე_შიდა() {
+        function most_inside_function() {
             console.log("ყველაზე შიდა ხედავს ყველაფერს:");
-            console.log(შიდა, გარე, გლობალური);
+            console.log(inside, outside, global);
         }
         
-        return ყველაზე_შიდა;
+        return most_inside_function;
     }
     
-    return შიდა_ფუნქცია;
+    return inside_function;
 }
 
-const შიდა = გარე_ფუნქცია();
-const ღირს_შიდა = შიდა();
-ღირს_შიდა();
+const inside = outside_function();
+const inside_value = inside();
+inside_value();
                     </pre>
             </div>
 
@@ -325,7 +325,7 @@ function დონე1() {
             <div class="code-container">
                 <div class="code-header">ძირითადი Closure</div>
                 <pre>
-function გარე_ფუნქცია(x) {
+function outside_function(x) {
     // გარე ფუნქციის ცვლადი
     let გარე_ცვლადი = x;
     
@@ -340,13 +340,13 @@ function გარე_ფუნქცია(x) {
 }
 
 // closure-ის შექმნა
-const მყო_ფუნქცია = გარე_ფუნქცია(10);
+const მყო_ფუნქცია = outside_function(10);
 
 // closure-ის გამოყენება
 console.log(მყო_ფუნქცია(5)); // 15
 
 // თითოეული closure შეიცავს უნიკალურ გარემოს
-const სხვა_ფუნქცია = გარე_ფუნქცია(20);
+const სხვა_ფუნქცია = outside_function(20);
 console.log(სხვა_ფუნქცია(5)); // 25
                     </pre>
             </div>
