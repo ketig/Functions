@@ -108,6 +108,89 @@
             </div>
         </div>
 
+        <!-- ფუნქციების სახეები -->
+        <div class="content-section" id="theory">
+            <h2>🔧 ფუნქციების სახეები</h2>
+
+            <h3>1. Function Declaration (ფუნქციის განაცხადი)</h3>
+            <p>ეს არის ტრადიციული და ყველაზე გავრცელებული ფუნქციის შექმნის მეთოდი JavaScript-ში.</p>
+
+            <div class="code-container">
+                <div class="code-header">Function Declaration მაგალითი</div>
+                <pre>
+// ფუნქციის განაცხადი
+function მისალმება(სახელი) {
+    return "გამარჯობა, " + სახელი + "!";
+}
+
+// გამოძახება
+console.log(მისალმება("ანა")); // გამარჯობა, ანა!
+                    </pre>
+            </div>
+
+            <div class="important">
+                <strong>მნიშვნელოვანი:</strong> Function Declaration-ები "hoisted" არიან, რაც ნიშნავს, რომ შეგიძლიათ
+                მათი გამოძახება მათი განაცხადამდე კოდში.
+            </div>
+
+            <h3>2. Function Expression (ფუნქციური გამოთქმა)</h3>
+            <p>ეს მეთოდი ქმნის ფუნქციას და ანიჭებს მას ცვლადს.</p>
+
+            <div class="code-container">
+                <div class="code-header">Function Expression მაგალითი</div>
+                <pre>
+// ფუნქციური გამოთქმა
+const გამრავლება = function(a, b) {
+    return a * b;
+};
+
+// გამოძახება
+console.log(გამრავლება(5, 3)); // 15
+
+// ანონიმური ფუნქცია
+const ანონიმური = function() {
+    console.log("ეს არის ანონიმური ფუნქცია");
+};
+                    </pre>
+            </div>
+
+            <h3>3. Arrow Function (ისრისებური ფუნქცია)</h3>
+            <p>ES6-ში დაემატა კომპაქტური ფუნქციების ჩასაწერად.</p>
+
+            <div class="code-container">
+                <div class="code-header">Arrow Function მაგალითები</div>
+                <pre>
+// ძირითადი ფორმა
+const მიმატება = (a, b) => {
+    return a + b;
+};
+
+// შემოკლებული ფორმა (ერთი ხაზი)
+const კვადრატი = x => x * x;
+
+// ბევრი პარამეტრი
+const სრული_სახელი = (სახელი, გვარი) => `${სახელი} ${გვარი}`;
+
+// არა პარამეტრები
+const მომავალი_წელი = () => new Date().getFullYear() + 1;
+
+// მაგალითები
+console.log(მიმატება(2, 3)); // 5
+console.log(კვადრატი(4)); // 16
+console.log(სრული_სახელი("გიორგი", "გიორგაძე")); // გიორგი გიორგაძე
+console.log(მომავალი_წელი()); // 2026
+                    </pre>
+            </div>
+
+            <div class="example">
+                <h3>🎯 ინტერაქტიული მაგალითი</h3>
+                <div class="interactive-demo">
+                    <button onclick="testFunctions()">ფუნქციების ტესტი</button>
+                    <div id="functionOutput" class="output">დააჭირეთ ღილაკს ფუნქციების ნახვისთვის</div>
+                </div>
+            </div>
+        </div>
+
         <!-- Scope ცნებები -->
         <div class="content-section" id="scope-concepts">
             <h2>🎯 Scope ცნებები</h2>
@@ -116,10 +199,10 @@
                 <strong>Scope</strong> განისაზღვრება როგორც ფარგლები, სადაც ცვლადები ხელმისაწვდომია და გამოიყენება.
             </div>
 
-            <h3>📍 Function Scope</h3>
-            <p>ცვლადები, რომლებიც გამოცხადებულია ფუნქციის შიგნით, ხელმისაწვდომია მხოლოდ ამ ფუნქციის შიგნით.</p>
-
-            <pre><code>function example() {
+            <div class="code-container">
+                <div class="code-header">📍 Function Scope</div>
+                <p>ცვლადები, რომლებიც გამოცხადებულია ფუნქციის შიგნით, ხელმისაწვდომია მხოლოდ ამ ფუნქციის შიგნით.</p>
+                <pre><code>function example() {
     var functionScoped = "მე ვარ ფუნქციის ფარგლებში";
     
     if (true) {
@@ -129,11 +212,13 @@
     console.log(functionScoped); // მუშაობს
     console.log(alsoFunctionScoped); // მუშაობს - var hoisting!
 }</code></pre>
+            </div>
 
-            <h3>🔒 Block Scope</h3>
-            <p>ცვლადები, რომლებიც გამოცხადებულია ბლოკის შიგნით <code>{}</code>, ხელმისაწვდომია მხოლოდ ამ ბლოკში.</p>
+            <div class="code-container">
+                <div class="code-header">🔒 Block Scope</div>
+                <p>ცვლადები, რომლებიც გამოცხადებულია ბლოკის შიგნით <code>{}</code>, ხელმისაწვდომია მხოლოდ ამ ბლოკში.</p>
 
-            <pre><code>function example() {
+                <pre><code>function example() {
     if (true) {
         let blockScoped = "მე ვარ ბლოკის ფარგლებში";
         const alsoBlockScoped = "მეც ბლოკის ფარგლებში ვარ";
@@ -144,6 +229,7 @@
     // console.log(blockScoped); // ReferenceError!
     // console.log(alsoBlockScoped); // ReferenceError!
 }</code></pre>
+            </div>
 
             <h3>⚡ var vs let vs const</h3>
             <div class="topic-grid">
@@ -181,11 +267,12 @@
         <div class="content-section" id="lexical-scope">
             <h2>🔗 Lexical Scope და Scope Chain</h2>
 
-            <h3>Lexical Scope (ლექსიკური Scope)</h3>
-            <p>JavaScript იყენებს lexical scoping-ს, რაც ნიშნავს რომ ფუნქციის scope განისაზღვრება იქ, სადაც ის წერია
-                კოდში, არა იქ სადაც მას იძახებენ.</p>
 
-            <pre><code>let global = "გლობალური მნიშვნელობა";
+            <div class="code-container">
+                <div class="code-header">JavaScript იყენებს lexical scoping-ს, რაც ნიშნავს რომ ფუნქციის scope
+                    განისაზღვრება იქ, სადაც ის წერია
+                    კოდში, არა იქ სადაც მას იძახებენ.</div>
+                <pre><code>let global = "გლობალური მნიშვნელობა";
 
 function outsideFunction() {
     let outside = "გარე ფუნქციის მნიშვნელობა";
@@ -212,12 +299,15 @@ function outsideFunction() {
 const inside = outsideFunction();
 const insideValue = inside();
 insideValue();</code></pre>
+            </div>
 
-            <h3>Scope Chain (Scope-ების ჯაჭვი)</h3>
-            <p>როდესაც JavaScript ეძებს ცვლადს, ის იწყებს მიმდინარე scope-იდან და მიდის მშობელ scope-ებში მანამ,
-                სანამ ნაპოვნი არ იქნება ან გლობალური scope არ დასრულდება.</p>
+            <div class="code-container">
+                <div class="code-header">Function Expression მაგალითი</div>
+                <h3>Scope Chain (Scope-ების ჯაჭვი)</h3>
+                <p>როდესაც JavaScript ეძებს ცვლადს, ის იწყებს მიმდინარე scope-იდან და მიდის მშობელ scope-ებში მანამ,
+                    სანამ ნაპოვნი არ იქნება ან გლობალური scope არ დასრულდება.</p>
 
-            <pre><code>let a = "გლობალური a";
+                <pre><code>let a = "გლობალური a";
 let b = "გლობალური b";
 let c = "გლობალური c";
 
@@ -244,6 +334,8 @@ function დონე1() {
 დონე1();
 
 // Scope chain: დონე3 -> დონე2 -> დონე1 -> Global</code></pre>
+            </div>
+
         </div>
 
         <!-- Closures -->
@@ -258,8 +350,9 @@ function დონე1() {
                 ცვლადებს, მაშინაც კი, როდესაც გარე ფუნქცია უკვე დასრულდა.
             </div>
 
-            <h3>ძირითადი Closure მაგალითი</h3>
-            <pre><code>function outsideFunction(x) {
+            <div class="code-container">
+                <div class="code-header">ძირითადი Closure მაგალითი</div>
+                <pre><code>function outsideFunction(x) {
     // გარე ფუნქციის ცვლადი
     let გარე_ცვლადი = x;
     
@@ -282,9 +375,11 @@ console.log(მყო_ფუნქცია(5)); // 15
 // თითოეული closure შეიცავს უნიკალურ გარემოს
 const სხვა_ფუნქცია = outsideFunction(20);
 console.log(სხვა_ფუნქცია(5)); // 25</code></pre>
+            </div>
 
-            <h3>Counter მაგალითი Closure-ით</h3>
-            <pre><code>function createCounter() {
+            <div class="code-container">
+                <h3>Counter მაგალითი Closure-ით</h3>
+                <pre><code>function createCounter() {
     let count = 0;
     
     return {
@@ -318,6 +413,7 @@ console.log(counter1.getValue()); // 2
 // მეორე კაუნტერი (დამოუკიდებელი)
 console.log(counter2.increment()); // 1
 console.log(counter2.getValue()); // 1</code></pre>
+            </div>
         </div>
 
         <!-- Modern JS Features -->
@@ -328,7 +424,8 @@ console.log(counter2.getValue()); // 1</code></pre>
             <p>Rest parameter-ი საშუალებას გვაძლევს ფუნქციაში მივიღოთ რაოდენობით განუსაზღვრელი არგუმენტები მასივის
                 სახით.</p>
 
-            <pre><code>function sum(...numbers) {
+            <div class="code-container">
+                <pre><code>function sum(...numbers) {
     return numbers.reduce((total, num) => total + num, 0);
 }
 
@@ -341,11 +438,13 @@ function greetAll(greeting, ...names) {
 
 console.log(greetAll("გამარჯობა", "ანა", "ნიკა", "მარიამი"));
 // ["გამარჯობა, ანა!", "გამარჯობა, ნიკა!", "გამარჯობა, მარიამი!"]</code></pre>
+            </div>
 
             <h3>Spread Operator (გავრცელების ოპერატორი)</h3>
             <p>Spread operator იყენება მასივების ან ობიექტების "გაშლისთვის".</p>
 
-            <pre><code>// მასივებთან მუშაობა
+            <div class="code-container">
+                <pre><code>// მასივებთან მუშაობა
 const arr1 = [1, 2, 3];
 const arr2 = [4, 5, 6];
 const combined = [...arr1, ...arr2]; // [1, 2, 3, 4, 5, 6]
@@ -366,6 +465,7 @@ const merged = { ...obj1, ...obj2 }; // { a: 1, b: 2, c: 3, d: 4 }
 // ობიექტის განახლება
 const person = { name: "ანა", age: 25 };
 const updatedPerson = { ...person, age: 26 }; // { name: "ანა", age: 26 }</code></pre>
+            </div>
         </div>
 
         <!-- Destructuring -->
@@ -373,10 +473,12 @@ const updatedPerson = { ...person, age: 26 }; // { name: "ანა", age: 26 }<
             <h2>🔄 Destructuring</h2>
 
             <h3>Array Destructuring (მასივის დეკონსტრუქცია)</h3>
-            <p>მასივის destructuring საშუალებას გვაძლევს ერთდროულად რამდენიმე ცვლადს მივანიჭოთ მნიშვნელობები მასივიდან.
+            <p>მასივის destructuring საშუალებას გვაძლევს ერთდროულად რამდენიმე ცვლადს მივანიჭოთ მნიშვნელობები
+                მასივიდან.
             </p>
 
-            <pre><code>const colors = ["წითელი", "ლურჯი", "მწვანე", "ყვითელი"];
+            <div class="code-container">
+                <pre><code>const colors = ["წითელი", "ლურჯი", "მწვანე", "ყვითელი"];
 
 // ძირითადი destructuring
 const [first, second, third] = colors;
@@ -396,10 +498,12 @@ console.log(secondary); // ["ლურჯი", "მწვანე", "ყვი�
 // Default values
 const [a, b, c, d, e = "უცნობი"] = colors;
 console.log(e); // "ყვითელი" (თუ არსებობს) ან "უცნობი"</code></pre>
+            </div>
 
             <h3>Object Destructuring (ობიექტის დეკონსტრუქცია)</h3>
 
-            <pre><code>const person = {
+            <div class="code-container">
+                <pre><code>const person = {
     name: "ნიკა",
     age: 25,
     city: "თბილისი",
@@ -433,10 +537,12 @@ const { info: { name: studentName, grade }, subjects: [firstSubject] } = student
 console.log(studentName); // "მარიამი"
 console.log(grade); // 12
 console.log(firstSubject); // "მათემატიკა"</code></pre>
+            </div>
 
             <h3>Function Parameters Destructuring</h3>
 
-            <pre><code>// ობიექტის destructuring function parameters-ში
+            <div class="code-container">
+                <pre><code>// ობიექტის destructuring function parameters-ში
 function createUser({ name, email, age = 18 }) {
     return {
         name,
@@ -457,6 +563,7 @@ function processCoordinates([x, y, z = 0]) {
 
 const coordinates = [10, 20];
 console.log(processCoordinates(coordinates)); // { x: 10, y: 20, z: 0 }</code></pre>
+            </div>
         </div>
 
         <!-- Modules -->
@@ -554,7 +661,8 @@ export function removeUser(id) {
         <div class="content-section" id="dom-basics">
             <h2>🌐 Document Object Model (DOM)</h2>
 
-            <p>DOM არის HTML დოკუმენტის პროგრამული წარმოდგენა, რომელიც საშუალებას გვაძლევს JavaScript-ით მანიპულირება
+            <p>DOM არის HTML დოკუმენტის პროგრამული წარმოდგენა, რომელიც საშუალებას გვაძლევს JavaScript-ით
+                მანიპულირება
                 გავუწიოთ HTML ელემენტებს.</p>
 
             <h3>DOM Tree Structure</h3>
@@ -610,7 +718,8 @@ console.log(h1.previousElementSibling); // წინა ელემენტი
             <h2>⚡ Script Loading - Defer და Async</h2>
 
             <h3>Default Behavior (ჩვეულებრივი ქცევა)</h3>
-            <p>ჩვეულებრივ, script ტეგები ბლოკავენ HTML-ის parsing-ს სანამ script ჩამოტვირთვა და შესრულება არ დასრულდება.
+            <p>ჩვეულებრივ, script ტეგები ბლოკავენ HTML-ის parsing-ს სანამ script ჩამოტვირთვა და შესრულება არ
+                დასრულდება.
             </p>
 
             <pre><code>&lt;script src="script.js"&gt;&lt;/script&gt;
