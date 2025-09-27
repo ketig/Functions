@@ -17,8 +17,7 @@
         </div>
 
         <div class="nav-tabs">
-            <button class="nav-tab active" onclick="showSection('session-plan')">📋 სესიის გეგმა</button>
-            <button class="nav-tab" onclick="showSection('function-types')">🔧 ფუნქციების სახეები</button>
+            <button class="nav-tab active" onclick="showSection('function-types')">🔧 ფუნქციების სახეები</button>
             <button class="nav-tab" onclick="showSection('scope-fundamentals')">🎯 Scope საფუძვლები</button>
             <button class="nav-tab" onclick="showSection('lexical-scope')">🔗 Lexical Scope & Chain</button>
             <button class="nav-tab" onclick="showSection('closures')">📦 Closures</button>
@@ -28,45 +27,12 @@
             <button class="nav-tab" onclick="showSection('modules')">📁 ES6 Modules</button>
             <button class="nav-tab" onclick="showSection('practical-exercises')">💻 პრაქტიკული ვარჯიშები</button>
             <button class="nav-tab" onclick="showSection('coding-challenges')">🎯 კოდირების გამოწვევები</button>
-            <button class="nav-tab" onclick="showSection('homework')">📝 სახლის დავალება</button>
             <button class="nav-tab" onclick="showSection('resources')">📚 რესურსები</button>
-            <button class="nav-tab" onclick="showSection('quiz')">🎉 ქვიზი</button>
         </div>
 
         <div class="content">
-            <!-- Session Plan -->
-            <div id="session-plan" class="section active">
-                <h2>📋 სესიის გეგმა</h2>
-                <div class="theory-box">
-                    <h3>სწავლის მიზნები:</h3>
-                    <ul>
-                        <li>JavaScript-ის ფუნქციების სხვადასხვა სახის გაგება</li>
-                        <li>Scope-ის ცნების დაუფლება</li>
-                        <li>Closures-ის გამოყენება</li>
-                        <li>ES6+ თანამედროვე ფუნქციების შესწავლა</li>
-                        <li>Destructuring-ის ტექნიკები</li>
-                        <li>Modular JavaScript-ის საფუძვლები</li>
-                    </ul>
-                </div>
-
-                <div class="highlight">
-                    <strong>⏱️ სესიის ხანგრძლივობა:</strong> 2.5 საათი<br>
-                    <strong>📚 უნარ-ჩვევები:</strong> Intermediate JavaScript Programming<br>
-                    <strong>🔧 ინსტრუმენტები:</strong> VS Code, Browser DevTools, Node.js
-                </div>
-
-                <h3>📅 სესიის განრიგი:</h3>
-                <ul class="task-list">
-                    <li><strong>00:00-00:30</strong> - ფუნქციების სახეები და Scope</li>
-                    <li><strong>00:30-01:00</strong> - Lexical Scope და Closures</li>
-                    <li><strong>01:00-01:15</strong> - ☕ Break</li>
-                    <li><strong>01:15-02:00</strong> - ES6+ Features (Rest, Spread, Destructuring)</li>
-                    <li><strong>02:00-02:30</strong> - Modules და პრაქტიკული ვარჯიშები</li>
-                </ul>
-            </div>
-
             <!-- Function Types -->
-            <div id="function-types" class="section">
+            <div id="function-types" class="section active">
                 <h2>🔧 ფუნქციების სახეები</h2>
 
                 <div class="theory-box">
@@ -97,15 +63,17 @@ function sayHi() {
                 <h3>2️⃣ Function Expression</h3>
                 <div class="example-box">
                     <pre><code>// Function Expression
-const [sum, difference, product, quotient] = calculate(10, 5);
-console.log(`Sum: ${sum}, Difference: ${difference}`);
-// Sum: 15, Difference: 5
+const greetUser = function(name) {
+    return `Hello, ${name}!`;
+};
 
-// Nested arrays
-const matrix = [[1, 2], [3, 4]];
-const [[a, b], [c, d]] = matrix;
-console.log(a, b, c, d); // 1 2 3 4
-</code></pre>
+// Anonymous Function Expression
+const calculate = function(x, y) {
+    return x + y;
+};
+
+// ამ შემთხვევაში Hoisting არ მუშაობს
+console.log(greetUser("Ana")); // "Hello, Ana!"</code></pre>
                 </div>
 
                 <h3>3️⃣ Arrow Function (ES6)</h3>
@@ -127,56 +95,32 @@ const getRandomNumber = () => Math.random();
 console.log(add(5, 3)); // 8</code></pre>
                 </div>
 
-                <div class="example-box">
-                    <pre><code>// Anonymous Function Expression
-                greetUser = function(name) {
-return `Hello, ${name}!`;
-};
-
-// Named Function Expression
-const calculate = function calc(x, y) {
-return x + y;
-};
-
-// ამ შემთხვევაში Hoisting არ მუშაობს
-console.log(greetUser("Ana")); // "Hello, Ana!"</code></pre>
+                <div class="highlight">
+                    <strong>🔑 მთავარი განსხვავებები:</strong><br>
+                    • Arrow functions არ აქვთ საკუთარი <code>this</code><br>
+                    • Function declarations იწვევენ hoisting-ს<br>
+                    • Arrow functions უფრო კომპაქტური სინტაქსი აქვთ
                 </div>
             </div>
 
-            <div class="highlight">
-                <strong>🔑 მთავარი განსხვავებები:</strong><br>
-                • Arrow functions არ აქვთ საკუთარი <code>this</code><br>
-                • Function declarations იწვევენ hoisting-ს<br>
-                • Arrow functions უფრო კომპაქტური სინტაქსი აქვთ
-            </div>
+            <!-- Scope Fundamentals -->
+            <div id="scope-fundamentals" class="section">
+                <h2>🎯 Scope საფუძვლები</h2>
 
-            <div class="highlight">
-                <strong>💡 მთავარი უპირატესობები:</strong><br>
-                • კოდი უფრო მოკლე და წაკითხვადი<br>
-                • ცვლადების მარტივი შეცვლა<br>
-                • ფუნქციებიდან მრავალი მნიშვნელობის მიღება
-            </div>
-        </div>
+                <div class="theory-box">
+                    <h3>რა არის Scope?</h3>
+                    <p>Scope განსაზღვრავს სად არის ხელმისაწვდომი ცვლადები და ფუნქციები კოდში. JavaScript-ში არის
+                        რამდენიმე სახის scope:</p>
+                    <ul>
+                        <li><strong>Global Scope</strong> - გლობალური</li>
+                        <li><strong>Function Scope</strong> - ფუნქციის</li>
+                        <li><strong>Block Scope</strong> - ბლოკის (ES6+)</li>
+                    </ul>
+                </div>
 
-        <!-- Scope Fundamentals -->
-        <div id="scope-fundamentals" class="section">
-            <h2>🎯 Scope საფუძვლები</h2>
-
-            <div class="theory-box">
-                <h3>რა არის Scope?</h3>
-                <p>Scope განსაზღვრავს სად არის ხელმისაწვდომი ცვლადები და ფუნქციები კოდში. JavaScript-ში არის
-                    რამდენიმე სახის
-                    scope:</p>
-                <ul>
-                    <li><strong>Global Scope</strong> - გლობალური</li>
-                    <li><strong>Function Scope</strong> - ფუნქციის</li>
-                    <li><strong>Block Scope</strong> - ბლოკის (ES6+)</li>
-                </ul>
-            </div>
-
-            <h3>🌍 Global Scope</h3>
-            <div class="example-box">
-                <pre><code>// Global Scope - ყველგან ხელმისაწვდომი
+                <h3>🌍 Global Scope</h3>
+                <div class="example-box">
+                    <pre><code>// Global Scope - ყველგან ხელმისაწვდომი
 let globalVar = "I'm global!";
 var oldGlobal = "I'm also global!";
 
@@ -186,11 +130,11 @@ function showGlobal() {
 }
 
 showGlobal(); // "I'm global!" "I'm also global!"</code></pre>
-            </div>
+                </div>
 
-            <h3>🔧 Function Scope</h3>
-            <div class="example-box">
-                <pre><code>function myFunction() {
+                <h3>🔧 Function Scope</h3>
+                <div class="example-box">
+                    <pre><code>function myFunction() {
     let functionVar = "I'm in function scope";
     var oldFunctionVar = "Me too!";
     
@@ -202,11 +146,11 @@ myFunction();
 
 // console.log(functionVar); // Error! არ არის ხელმისაწვდომი
 // console.log(oldFunctionVar); // Error! არ არის ხელმისაწვდომი</code></pre>
-            </div>
+                </div>
 
-            <h3>📦 Block Scope (ES6+)</h3>
-            <div class="example-box">
-                <pre><code>// Block Scope - let და const გამოყენებისას
+                <h3>📦 Block Scope (ES6+)</h3>
+                <div class="example-box">
+                    <pre><code>// Block Scope - let და const გამოყენებისას
 if (true) {
     let blockVar = "I'm in block scope";
     const blockConst = "Me too!";
@@ -225,28 +169,26 @@ for (let i = 0; i < 3; i++) {
     console.log(i); // 0, 1, 2
 }
 // console.log(i); // Error!</code></pre>
+                </div>
+
+                <div class="highlight">
+                    <strong>💡 რჩევა:</strong> ყოველთვის გამოიყენეთ <code>let</code> და <code>const</code>
+                    <code>var</code>-ის ნაცვლად!
+                </div>
             </div>
 
-            <div class="highlight">
-                <strong>💡 რჩევა:</strong> ყოველთვის გამოიყენეთ <code>let</code> და <code>const</code>
-                <code>var</code>-ის
-                ნაცვლად!
-            </div>
-        </div>
+            <!-- Lexical Scope -->
+            <div id="lexical-scope" class="section">
+                <h2>🔗 Lexical Scope & Scope Chain</h2>
 
-        <!-- Lexical Scope -->
-        <div id="lexical-scope" class="section">
-            <h2>🔗 Lexical Scope & Scope Chain</h2>
+                <div class="theory-box">
+                    <h3>Lexical Scope</h3>
+                    <p>Lexical Scope ნიშნავს, რომ ფუნქციის scope განისაზღვრება იქ, სადაც ის არის განსაზღვრული კოდში, არა
+                        იქ სადაც იძახება.</p>
+                </div>
 
-            <div class="theory-box">
-                <h3>Lexical Scope</h3>
-                <p>Lexical Scope ნიშნავს, რომ ფუნქციის scope განისაზღვრება იქ, სადაც ის არის განსაზღვრული კოდში, არა
-                    იქ სადაც
-                    იძახება.</p>
-            </div>
-
-            <div class="example-box">
-                <pre><code>let globalVar = "Global";
+                <div class="example-box">
+                    <pre><code>let globalVar = "Global";
 
 function outerFunction() {
     let outerVar = "Outer";
@@ -265,17 +207,16 @@ function outerFunction() {
 }
 
 outerFunction();</code></pre>
-            </div>
+                </div>
 
-            <h3>🔗 Scope Chain</h3>
-            <div class="theory-box">
-                <p>JavaScript ეძებს ცვლადებს Scope Chain-ის მიხედვით: ჯერ ლოკალურ scope-ში, შემდეგ parent scope-ში
-                    და ასე შემდეგ
-                    global scope-მდე.</p>
-            </div>
+                <h3>🔗 Scope Chain</h3>
+                <div class="theory-box">
+                    <p>JavaScript ეძებს ცვლადებს Scope Chain-ის მიხედვით: ჯერ ლოკალურ scope-ში, შემდეგ parent scope-ში
+                        და ასე შემდეგ global scope-მდე.</p>
+                </div>
 
-            <div class="example-box">
-                <pre><code>let name = "Global Ana";
+                <div class="example-box">
+                    <pre><code>let name = "Global Ana";
 
 function level1() {
     let name = "Level1 Nino";
@@ -309,29 +250,27 @@ function findVariable() {
 
 let searchVar = "global";
 findVariable(); // "global"</code></pre>
+                </div>
+
+                <div class="highlight">
+                    <strong>🎯 მნიშვნელოვანი:</strong> JavaScript ყოველთვის იყენებს ახლო scope-ს. თუ ცვლადი არსებობს
+                    რამდენიმე scope-ში, გამოიყენება ყველაზე ახლო.
+                </div>
             </div>
 
-            <div class="highlight">
-                <strong>🎯 მნიშვნელოვანი:</strong> JavaScript ყოველთვის იყენებს ახლო scope-ს. თუ ცვლადი არსებობს
-                რამდენიმე
-                scope-ში, გამოიყენება ყველაზე ახლო.
-            </div>
-        </div>
+            <!-- Closures -->
+            <div id="closures" class="section">
+                <h2>📦 Closures</h2>
 
-        <!-- Closures -->
-        <div id="closures" class="section">
-            <h2>📦 Closures</h2>
+                <div class="theory-box">
+                    <h3>რა არის Closure?</h3>
+                    <p>Closure ეს არის ფუნქცია, რომელსაც აქვს წვდომა თავის parent scope-ის ცვლადებზე, მაშინაც კი როცა
+                        parent ფუნქცია უკვე დასრულებულია.</p>
+                </div>
 
-            <div class="theory-box">
-                <h3>რა არის Closure?</h3>
-                <p>Closure ეს არის ფუნქცია, რომელსაც აქვს წვდომა თავის parent scope-ის ცვლადებზე, მაშინაც კი როცა
-                    parent ფუნქცია
-                    უკვე დასრულებულია.</p>
-            </div>
-
-            <h3>🔮 ძირითადი მაგალითი</h3>
-            <div class="example-box">
-                <pre><code>function createCounter() {
+                <h3>🔮 ძირითადი მაგალითი</h3>
+                <div class="example-box">
+                    <pre><code>function createCounter() {
     let count = 0; // private ცვლადი
     
     return function() {
@@ -347,11 +286,11 @@ console.log(counter1()); // 1
 console.log(counter1()); // 2
 console.log(counter2()); // 1 (განცალკევებული counter)
 console.log(counter1()); // 3</code></pre>
-            </div>
+                </div>
 
-            <h3>🛡️ Private ცვლადები</h3>
-            <div class="example-box">
-                <pre><code>function createBankAccount(initialBalance) {
+                <h3>🛡️ Private ცვლადები</h3>
+                <div class="example-box">
+                    <pre><code>function createBankAccount(initialBalance) {
     let balance = initialBalance;
     
     return {
@@ -382,63 +321,33 @@ console.log(myAccount.withdraw(200)); // 1300
 
 // balance-ზე პირდაპირ წვდომა შეუძლებელია
 // console.log(myAccount.balance); // undefined</code></pre>
+                </div>
+
+                <div class="highlight">
+                    <strong>💡 Closures-ის გამოყენება:</strong><br>
+                    • Private ცვლადების შექმნა<br>
+                    • Module Pattern<br>
+                    • Callback Functions<br>
+                    • Event Handlers
+                </div>
             </div>
 
-            <h3>🔄 Loop-ებში Closures</h3>
-            <div class="example-box">
-                <pre><code>// ❌ არასწორი გზა (var-ით)
-console.log("არასწორი მაგალითი:");
-for (var i = 1; i <= 3; i++) {
-    setTimeout(function() {
-        console.log("var: " + i); // ყველა 4-ს დაბეჭდავს
-    }, 1000);
-}
+            <!-- Rest & Spread -->
+            <div id="rest-spread" class="section">
+                <h2>✨ Rest & Spread Operators</h2>
 
-// ✅ სწორი გზა (let-ით)
-console.log("სწორი მაგალითი:");
-for (let i = 1; i <= 3; i++) {
-    setTimeout(function() {
-        console.log("let: " + i); // 1, 2, 3-ს დაბეჭდავს
-    }, 1000);
-}
+                <div class="theory-box">
+                    <h3>Rest (...) Operator</h3>
+                    <p>Rest operator აგროვებს მრავალ ელემენტს ერთ მასივში. გამოიყენება ფუნქციის პარამეტრებში და
+                        destructuring-ში.</p>
 
-// ✅ IIFE-ით (Immediately Invoked Function Expression)
-console.log("IIFE მაგალითი:");
-for (var i = 1; i <= 3; i++) {
-    (function(index) {
-        setTimeout(function() {
-            console.log("IIFE: " + index); // 1, 2, 3-ს დაბეჭდავს
-        }, 1000);
-    })(i);
-}</code></pre>
-            </div>
+                    <h3>Spread (...) Operator</h3>
+                    <p>Spread operator "აშლის" მასივს ან ობიექტს ცალკეულ ელემენტებად.</p>
+                </div>
 
-            <div class="highlight">
-                <strong>💡 Closures-ის გამოყენება:</strong><br>
-                • Private ცვლადების შექმნა<br>
-                • Module Pattern<br>
-                • Callback Functions<br>
-                • Event Handlers
-            </div>
-        </div>
-
-        <!-- Rest & Spread -->
-        <div id="rest-spread" class="section">
-            <h2>✨ Rest & Spread Operators</h2>
-
-            <div class="theory-box">
-                <h3>Rest (...) Operator</h3>
-                <p>Rest operator აგროვებს მრავალ ელემენტს ერთ მასივში. გამოიყენება ფუნქციის პარამეტრებში და
-                    destructuring-ში.
-                </p>
-
-                <h3>Spread (...) Operator</h3>
-                <p>Spread operator "აშლის" მასივს ან ობიექტს ცალკეულ ელემენტებად.</p>
-            </div>
-
-            <h3>📥 Rest Parameters</h3>
-            <div class="example-box">
-                <pre><code>// Rest parameters - ყველა argument-ი მასივში
+                <h3>📥 Rest Parameters</h3>
+                <div class="example-box">
+                    <pre><code>// Rest parameters - ყველა argument-ი მასივში
 function sum(...numbers) {
     console.log(numbers); // მასივია
     return numbers.reduce((total, num) => total + num, 0);
@@ -454,11 +363,11 @@ function greetUsers(greeting, ...names) {
 
 console.log(greetUsers("Hello", "Ana", "Nino", "Mari"));
 // ["Hello, Ana!", "Hello, Nino!", "Hello, Mari!"]</code></pre>
-            </div>
+                </div>
 
-            <h3>📤 Spread Syntax</h3>
-            <div class="example-box">
-                <pre><code>// Spread მასივებთან
+                <h3>📤 Spread Syntax</h3>
+                <div class="example-box">
+                    <pre><code>// Spread მასივებთან
 const numbers1 = [1, 2, 3];
 const numbers2 = [4, 5, 6];
 
@@ -480,44 +389,29 @@ const address = { city: "Tbilisi", country: "Georgia" };
 const fullInfo = { ...person, ...address, age: 26 };
 console.log(fullInfo);
 // { name: "Ana", age: 26, city: "Tbilisi", country: "Georgia" }</code></pre>
+                </div>
+
+                <div class="highlight">
+                    <strong>💡 მთავარი უპირატესობები:</strong><br>
+                    • კოდი უფრო მოკლე და წაკითხვადი<br>
+                    • ცვლადების მარტივი შეცვლა<br>
+                    • ფუნქციებიდან მრავალი მნიშვნელობის მიღება
+                </div>
             </div>
 
-            <h3>🔄 Rest vs Spread</h3>
-            <div class="example-box">
-                <pre><code>// REST - აგროვებს
-function processItems(...items) { // REST
-    console.log("Items:", items);
-    return items.length;
-}
+            <!-- Array Destructuring -->
+            <div id="array-destructuring" class="section">
+                <h2>📋 Array Destructuring</h2>
 
-const myArray = [1, 2, 3, 4, 5];
+                <div class="theory-box">
+                    <h3>Array Destructuring</h3>
+                    <p>Array Destructuring გვაძლევს საშუალებას მასივის ელემენტები ცალკეულ ცვლადებში გავანაწილოთ მოკლე და
+                        მარტივი სინტაქსით.</p>
+                </div>
 
-// SPREAD - აშლის
-const count = processItems(...myArray); // SPREAD
-console.log("Count:", count); // 5
-
-// Array destructuring-ში REST
-const [first, second, ...rest] = myArray;
-console.log("First:", first);   // 1
-console.log("Second:", second); // 2
-console.log("Rest:", rest);     // [3, 4, 5]</code></pre>
-            </div>
-        </div>
-
-        <!-- Array Destructuring -->
-        <div id="array-destructuring" class="section">
-            <h2>📋 Array Destructuring</h2>
-
-            <div class="theory-box">
-                <h3>Array Destructuring</h3>
-                <p>Array Destructuring გვაძლევს საშუალებას მასივის ელემენტები ცალკეულ ცვლადებში გავანაწილოთ მოკლე და
-                    მარტივი
-                    სინტაქსით.</p>
-            </div>
-
-            <h3>🎯 ძირითადი გამოყენება</h3>
-            <div class="example-box">
-                <pre><code>// ძველი გზა
+                <h3>🎯 ძირითადი გამოყენება</h3>
+                <div class="example-box">
+                    <pre><code>// ძველი გზა
 const fruits = ["apple", "banana", "orange"];
 const firstFruit = fruits[0];
 const secondFruit = fruits[1];
@@ -532,11 +426,11 @@ console.log(third);  // "orange"
 const [a, , c] = fruits; // banana-ის გამოტოვება
 console.log(a); // "apple"
 console.log(c); // "orange"</code></pre>
-            </div>
+                </div>
 
-            <h3>🎨 მოწინავე ტექნიკები</h3>
-            <div class="example-box">
-                <pre><code>// Default values
+                <h3>🎨 მოწინავე ტექნიკები</h3>
+                <div class="example-box">
+                    <pre><code>// Default values
 const colors = ["red"];
 const [primary, secondary = "blue"] = colors;
 console.log(primary);   // "red"
@@ -554,11 +448,11 @@ let y = 20;
 [x, y] = [y, x];
 console.log(x); // 20
 console.log(y); // 10</code></pre>
-            </div>
+                </div>
 
-            <h3>🔧 ფუნქციებთან გამოყენება</h3>
-            <div class="example-box">
-                <pre><code>// ფუნქცია რაც დააბრუნებს მასივს
+                <h3>🔧 ფუნქციებთან გამოყენება</h3>
+                <div class="example-box">
+                    <pre><code>// ფუნქცია რაც დააბრუნებს მასივს
 function getCoordinates() {
     return [42.0, 43.0];
 }
@@ -572,32 +466,23 @@ function calculate(a, b) {
 }
 
 const [sum, difference, product, quotient] = calculate(10, 2);
-console.log(`Sum: ${sum}, Difference: ${difference}, Product: ${product}, Quotient: ${quotient}`);</code></pre>
+console.log(`Sum: ${sum}, Difference: ${difference}`);</code></pre>
+                </div>
             </div>
 
-            <div class="highlight">
-                <strong>🚀 რეალური მაგალითები:</strong><br>
-                • API responses-ის დამუშავება<br>
-                • React state hooks-ების გამოყენება<br>
-                • Loop-ებში index და value ერთად აღება<br>
-                • ფუნქციების მრავალი მნიშვნელობის დაბრუნება
-            </div>
-        </div>
+            <!-- Object Destructuring -->
+            <div id="object-destructuring" class="section">
+                <h2>🔄 Object Destructuring</h2>
 
-        <!-- Object Destructuring -->
-        <div id="object-destructuring" class="section">
-            <h2>🔄 Object Destructuring</h2>
+                <div class="theory-box">
+                    <h3>Object Destructuring</h3>
+                    <p>Object Destructuring საშუალებას გვაძლევს ობიექტის properties ცალკეულ ცვლადებში ავიღოთ. ეს
+                        განსაკუთრებით სასარგებლოა API responses და complex objects-ებთან მუშაობისას.</p>
+                </div>
 
-            <div class="theory-box">
-                <h3>Object Destructuring</h3>
-                <p>Object Destructuring საშუალებას გვაძლევს ობიექტის properties ცალკეულ ცვლადებში ავიღოთ. ეს
-                    განსაკუთრებით სასარგებლოა API responses და complex objects-ებთან მუშაობისას.</p>
-            </div>
-
-            <h3>🎯 ძირითადი გამოყენება</h3>
-            <div class="example-box">
-                <pre><code>
-// ძველი გზა
+                <h3>🎯 ძირითადი გამოყენება</h3>
+                <div class="example-box">
+                    <pre><code>// ძველი გზა
 const person = {
     name: "Ana",
     age: 25,
@@ -618,11 +503,11 @@ console.log(city); // "Tbilisi"
 const { name: fullName, profession: job } = person;
 console.log(fullName); // "Ana"
 console.log(job);      // "Developer"</code></pre>
-            </div>
+                </div>
 
-            <h3>🎨 მოწინავე ტექნიკები</h3>
-            <div class="example-box">
-                <pre><code>// Default values
+                <h3>🎨 მოწინავე ტექნიკები</h3>
+                <div class="example-box">
+                    <pre><code>// Default values
 const settings = { theme: "dark" };
 const { theme, language = "Georgian", fontSize = 16 } = settings;
 
@@ -651,11 +536,11 @@ console.log(userName);   // "Nino"
 console.log(userCity);   // "Tbilisi"
 console.log(country);    // "Georgia"
 console.log(firstHobby); // "reading"</code></pre>
-            </div>
+                </div>
 
-            <h3>🔧 ფუნქციებში Destructuring</h3>
-            <div class="example-box">
-                <pre><code>// Function parameters destructuring
+                <h3>🔧 ფუნქციებში Destructuring</h3>
+                <div class="example-box">
+                    <pre><code>// Function parameters destructuring
 function displayUser({ name, age, city = "Unknown" }) {
     console.log(`Name: ${name}`);
     console.log(`Age: ${age}`);
@@ -686,30 +571,30 @@ const { host, port, ...options } = config;
 console.log(host);    // "localhost"
 console.log(port);    // 3000
 console.log(options); // { ssl: true, debug: false, timeout: 5000 }</code></pre>
+                </div>
+
+                <div class="highlight">
+                    <strong>🚀 რეალური მაგალითები:</strong><br>
+                    • API responses-ის დამუშავება<br>
+                    • React props-ების destructuring<br>
+                    • Configuration objects<br>
+                    • Module imports
+                </div>
             </div>
 
-            <div class="highlight">
-                <strong>🚀 რეალური მაგალითები:</strong><br>
-                • API responses-ის დამუშავება<br>
-                • React props-ების destructuring<br>
-                • Configuration objects<br>
-                • Module imports
-            </div>
-        </div>
+            <!-- ES6 Modules -->
+            <div id="modules" class="section">
+                <h2>📁 ES6 Modules</h2>
 
-        <!-- ES6 Modules -->
-        <div id="modules" class="section">
-            <h2>📁 ES6 Modules</h2>
+                <div class="theory-box">
+                    <h3>ES6 Modules</h3>
+                    <p>Modules საშუალებას გვაძლევს კოდი დავყოთ ცალკეულ ფაილებში და მოდულებში. ეს ხდის კოდს უფრო
+                        ორგანიზებულს, ხელახლა გამოსაყენებელს და მარტივად სატესტოს.</p>
+                </div>
 
-            <div class="theory-box">
-                <h3>ES6 Modules</h3>
-                <p>Modules საშუალებას გვაძლევს კოდი დავყოთ ცალკეულ ფაილებში და მოდულებში. ეს ხდის კოდს უფრო
-                    ორგანიზებულს, ხელახლა გამოსაყენებელს და მარტივად სატესტოს.</p>
-            </div>
-
-            <h3>📤 Export - ექსპორტი</h3>
-            <div class="example-box">
-                <pre><code>// math.js ფაილი
+                <h3>📤 Export - ექსპორტი</h3>
+                <div class="example-box">
+                    <pre><code>// math.js ფაილი
 // Named exports
 export const PI = 3.14159;
 
@@ -737,11 +622,11 @@ export default function calculator(operation, a, b) {
         default: return 0;
     }
 }</code></pre>
-            </div>
+                </div>
 
-            <h3>📥 Import - იმპორტი</h3>
-            <div class="example-box">
-                <pre><code>// main.js ფაილი
+                <h3>📥 Import - იმპორტი</h3>
+                <div class="example-box">
+                    <pre><code>// main.js ფაილი
 // Named imports
 import { PI, add, multiply } from './math.js';
 
@@ -763,330 +648,147 @@ console.log(minus(10, 3)); // 7
 
 // Mixed imports
 import calculator, { PI, add } from './math.js';</code></pre>
+                </div>
+
+                <div class="highlight">
+                    <strong>⚠️ მნიშვნელოვანი:</strong><br>
+                    • Modules მუშაობს მხოლოდ server-ზე ან <code>type="module"</code>-ით<br>
+                    • ფაილის extension (.js) აუცილებელია<br>
+                    • Modules ყოველთვის strict mode-შია
+                </div>
             </div>
 
-            <h3>🌟 რეალური მაგალითი</h3>
-            <div class="example-box">
-                <pre><code>// utils.js
-export const formatDate = (date) => {
-    return new Intl.DateTimeFormat('ka-GE').format(date);
-};
+            <!-- Practical Exercises -->
+            <div id="practical-exercises" class="section">
+                <h2>💻 პრაქტიკული ვარჯიშები</h2>
 
-export const capitalize = (str) => {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-};
+                <div class="exercise-box">
+                    <div class="exercise-title">🎯 ვარჯიში 1: Function Types</div>
+                    <p><strong>დავალება:</strong> შექმენით ერთი და იგივე ფუნქცია სამივე სტილში:</p>
+                    <ul>
+                        <li>Function Declaration</li>
+                        <li>Function Expression</li>
+                        <li>Arrow Function</li>
+                    </ul>
+                    <p>ფუნქცია უნდა იღებდეს სახელს და ასაკს, დააბრუნოს მისალმების ტექსტი.</p>
+                </div>
 
-export class Logger {
-    static log(message) {
-        console.log(`[${new Date().toISOString()}] ${message}`);
-    }
-    
-    static error(message) {
-        console.error(`[ERROR] ${message}`);
-    }
-}
+                <div class="exercise-box">
+                    <div class="exercise-title">🔐 ვარჯიში 2: Closure Bank Account</div>
+                    <p><strong>დავალება:</strong> შექმენით bank account closure რომელსაც ექნება:</p>
+                    <ul>
+                        <li>deposit() - თანხის შეტანა</li>
+                        <li>withdraw() - თანხის გამოტანა (შეამოწმეთ balance)</li>
+                        <li>getBalance() - ბალანსის ჩვენება</li>
+                        <li>getTransactionHistory() - ტრანზაქციების ისტორია</li>
+                    </ul>
+                </div>
 
-// config.js
-export default {
-    API_URL: 'https://api.example.com',
-    TIMEOUT: 5000,
-    VERSION: '1.0.0'
-};
-
-// app.js
-import config from './config.js';
-import { formatDate, capitalize, Logger } from './utils.js';
-
-Logger.log('Application started');
-console.log(`API URL: ${config.API_URL}`);
-console.log(`Today: ${formatDate(new Date())}`);
-console.log(capitalize('hello world')); // "Hello world"</code></pre>
-            </div>
-
-            <div class="highlight">
-                <strong>⚠️ მნიშვნელოვანი:</strong><br>
-                • Modules მუშაობს მხოლოდ server-ზე ან <code>type="module"</code>-ით<br>
-                • ფაილის extension (.js) აუცილებელია<br>
-                • Modules ყოველთვის strict mode-შია
-            </div>
-        </div>
-
-        <!-- Practical Exercises -->
-        <div id="practical-exercises" class="section">
-            <h2>💻 პრაქტიკული ვარჯიშები</h2>
-
-            <div class="exercise-box">
-                <div class="exercise-title">🎯 ვარჯიში 1: Function Types</div>
-                <p><strong>დავალება:</strong> შექმენით ერთი და იგივე ფუნქცია სამივე სტილში:</p>
-                <ul>
-                    <li>Function Declaration</li>
-                    <li>Function Expression</li>
-                    <li>Arrow Function</li>
-                </ul>
-                <p>ფუნქცია უნდა იღებდეს სახელს და ასაკს, დააბრუნოს მისალმების ტექსტი.</p>
-            </div>
-
-            <div class="exercise-box">
-                <div class="exercise-title">🔐 ვარჯიში 2: Closure Bank Account</div>
-                <p><strong>დავალება:</strong> შექმენით bank account closure რომელსაც ექნება:</p>
-                <ul>
-                    <li>deposit() - თანხის შეტანა</li>
-                    <li>withdraw() - თანხის გამოტანა (შეამოწმეთ balance)</li>
-                    <li>getBalance() - ბალანსის ჩვენება</li>
-                    <li>getTransactionHistory() - ტრანზაქციების ისტორია</li>
-                </ul>
-            </div>
-
-            <div class="exercise-box">
-                <div class="exercise-title">📊 ვარჯიში 3: Array & Object Destructuring</div>
-                <p><strong>მოცემულია:</strong></p>
-                <div class="example-box">
-                    <pre><code>const students = [
+                <div class="exercise-box">
+                    <div class="exercise-title">📊 ვარჯიში 3: Array & Object Destructuring</div>
+                    <p><strong>მოცემულია:</strong></p>
+                    <div class="example-box">
+                        <pre><code>const students = [
     { name: "Ana", grades: [85, 90, 78], city: "Tbilisi" },
     { name: "Nino", grades: [92, 88, 95], city: "Batumi" },
     { name: "Mari", grades: [78, 85, 82], city: "Kutaisi" }
 ];</code></pre>
+                    </div>
+                    <p><strong>დავალება:</strong> Destructuring-ით:</p>
+                    <ul>
+                        <li>ამოიღეთ პირველი სტუდენტის სახელი და პირველი ქულა</li>
+                        <li>შექმენით ფუნქცია რომელიც იღებს student object-ს და აბრუნებს average ქულას</li>
+                    </ul>
                 </div>
-                <p><strong>დავალება:</strong> Destructuring-ით:</p>
-                <ul>
-                    <li>ამოიღეთ პირველი სტუდენტის სახელი და პირველი ქულა</li>
-                    <li>შექმენით ფუნქცია რომელიც იღებს student object-ს და აბრუნებს average ქულას</li>
-                </ul>
+
+                <div class="exercise-box">
+                    <div class="exercise-title">🛠️ ვარჯიში 4: Rest & Spread</div>
+                    <p><strong>დავალება:</strong> შექმენით ფუნქციები:</p>
+                    <ul>
+                        <li>findMinMax(...numbers) - ყველაზე პატარა და დიდი რიცხვი</li>
+                        <li>mergeArrays(...arrays) - მასივების გაერთიანება</li>
+                        <li>updateUser(user, updates) - spread-ით user object-ის განახლება</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="exercise-box">
-                <div class="exercise-title">🛠️ ვარჯიში 4: Rest & Spread</div>
-                <p><strong>დავალება:</strong> შექმენით ფუნქციები:</p>
-                <ul>
-                    <li>findMinMax(...numbers) - ყველაზე პატარა და დიდი რიცხვი</li>
-                    <li>mergeArrays(...arrays) - მასივების გაერთიანება</li>
-                    <li>updateUser(user, updates) - spread-ით user object-ის განახლება</li>
-                </ul>
-            </div>
-        </div>
+            <!-- Coding Challenges -->
+            <div id="coding-challenges" class="section">
+                <h2>🎯 კოდირების გამოწვევები</h2>
 
-        <!-- Coding Challenges -->
-        <div id="coding-challenges" class="section">
-            <h2>🎯 კოდირების გამოწვევები</h2>
-
-            <div class="exercise-box">
-                <div class="exercise-title">🏆 Challenge 1: Smart Calculator Module</div>
-                <p><strong>დავალება:</strong> შექმენით calculator module რომელიც:</p>
-                <ul>
-                    <li>ექსპორტ ფუნქციები: add, subtract, multiply, divide</li>
-                    <li>აქვს history closure რომელიც ინახავს ყველა operation-ს</li>
-                    <li>clearHistory() ფუნქცია</li>
-                    <li>getHistory() ფუნქცია</li>
-                </ul>
-                <div class="example-box">
-                    <pre><code>// მოსალოდნელი გამოყენება:
+                <div class="exercise-box">
+                    <div class="exercise-title">🏆 Challenge 1: Smart Calculator Module</div>
+                    <p><strong>დავალება:</strong> შექმენით calculator module რომელიც:</p>
+                    <ul>
+                        <li>ექსპორტ ფუნქციები: add, subtract, multiply, divide</li>
+                        <li>აქვს history closure რომელიც ინახავს ყველა operation-ს</li>
+                        <li>clearHistory() ფუნქცია</li>
+                        <li>getHistory() ფუნქცია</li>
+                    </ul>
+                    <div class="example-box">
+                        <pre><code>// მოსალოდნელი გამოყენება:
 import { add, getHistory, clearHistory } from './calculator.js';
 
 console.log(add(5, 3)); // 8
 console.log(getHistory()); // ["add(5, 3) = 8"]</code></pre>
+                    </div>
                 </div>
-            </div>
 
-            <div class="exercise-box">
-                <div class="exercise-title">🎮 Challenge 2: Game Score Manager</div>
-                <p><strong>დავალება:</strong> შექმენით game score manager:</p>
-                <div class="example-box">
-                    <pre><code>const gameManager = createGameManager();
+                <div class="exercise-box">
+                    <div class="exercise-title">🎮 Challenge 2: Game Score Manager</div>
+                    <p><strong>დავალება:</strong> შექმენით game score manager:</p>
+                    <div class="example-box">
+                        <pre><code>const gameManager = createGameManager();
 
 // მეთოდები:
 gameManager.addPlayer(name, initialScore = 0)
 gameManager.updateScore(name, points)  // + ან - points
 gameManager.getLeaderboard()          // დაყარებული სია
 gameManager.getPlayerStats(name)      // destructuring-ით დააბრუნოს stats</code></pre>
+                    </div>
                 </div>
             </div>
 
-            <div class="exercise-box">
-                <div class="exercise-title">🌟 Challenge 3: Utility Library</div>
-                <p><strong>დავალება:</strong> შექმენით utility library module:</p>
-                <ul>
-                    <li><code>deepClone(obj)</code> - ღრმა კოპირება</li>
-                    <li><code>groupBy(array, key)</code> - array-ის დაჯგუფება</li>
-                    <li><code>debounce(func, delay)</code> - debounce function</li>
-                    <li><code>formatters</code> - ობიექტი სხვადასხვა formatter ფუნქციებით</li>
-                </ul>
-            </div>
-        </div>
+            <!-- Resources -->
+            <div id="resources" class="section">
+                <h2>📚 რესურსები</h2>
 
-        <!-- Homework -->
-        <div id="homework" class="section">
-            <h2>📝 დავალება</h2>
-            <div class="exercise-box">
-                <div class="exercise-title">🏠 დავალება 1: Shopping Cart Module</div>
-                <p><strong>შექმენით shopping cart module შემდეგი ფუნქციონალით:</strong></p>
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <h3>📖 დოკუმენტაცია</h3>
+                        <ul>
+                            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions"
+                                    target="_blank">MDN - Functions</a></li>
+                            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures"
+                                    target="_blank">MDN - Closures</a></li>
+                            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment"
+                                    target="_blank">MDN - Destructuring</a></li>
+                            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules"
+                                    target="_blank">MDN - Modules</a></li>
+                        </ul>
+                    </div>
 
-                <div class="example-box">
-                    <pre><code>// cart.js - ES6 module
-// მოსალოდნელი გამოყენება:
-import ShoppingCart from './cart.js';
+                    <div class="resource-card">
+                        <h3>🎥 ვიდეო მასალები</h3>
+                        <ul>
+                            <li><a href="">JavaScript Closures Explained</a></li>
+                            <li><a href="">Arrow Functions vs Regular Functions</a></li>
+                            <li><a href="">JavaScript Modules Complete Guide</a></li>
+                        </ul>
+                    </div>
 
-const cart = new ShoppingCart();
-
-cart.addItem({ id: 1, name: "Laptop", price: 1200, quantity: 1 });
-cart.addItem({ id: 2, name: "Mouse", price: 25, quantity: 2 });
-
-console.log(cart.getTotal()); // 1250
-console.log(cart.getItemCount()); // 3
-cart.removeItem(1);
-console.log(cart.getCart()); // დარჩენილი items</code></pre>
-                </div>
-
-                <p><strong>მოთხოვნები:</strong></p>
-                <ul>
-                    <li>გამოიყენეთ ES6 Classes და Modules</li>
-                    <li>private methods-ისთვის გამოიყენეთ Closures</li>
-                    <li>ყველა method-ში გამოიყენეთ Destructuring</li>
-                    <li>validation-ისთვის გამოიყენეთ default parameters</li>
-                </ul>
-            </div>
-
-            <div class="exercise-box">
-                <div class="exercise-title">🏠 დავალება 2: Data Processing Pipeline</div>
-                <p><strong>შექმენით data processing module:</strong></p>
-
-                <div class="example-box">
-                    <pre><code>// მოცემული data
-const rawData = [
-    "Ana Beridze,25,Tbilisi,Developer,3500",
-    "Nino Kapanadze,30,Batumi,Designer,2800",
-    "Mari Gelashvili,28,Kutaisi,Manager,4200"
-];
-
-// მოსალოდნელი შედეგი:
-[
-    { name: "Ana", surname: "Beridze", age: 25, city: "Tbilisi", 
-      position: "Developer", salary: 3500 },
-    // ...
-]</code></pre>
-                </div>
-
-                <p><strong>ფუნქციები რაც უნდა შექმნათ:</strong></p>
-                <ul>
-                    <li><code>parseData(rawData)</code> - string array-ს object array-ში გარდაქმნა</li>
-                    <li><code>filterByCity(...cities)</code> - rest parameter-ით ფილტრაცია</li>
-                    <li><code>sortBySalary(ascending = true)</code> - default parameter</li>
-                    <li><code>getStatistics()</code> - average salary, cities count, etc.</li>
-                </ul>
-            </div>
-
-            <div class="highlight">
-                <strong>📅 ჩაბარების ვადა:</strong> მომავალი სესიის დაწყებამდე<br>
-                <strong>📋 ჩაბარების ფორმა:</strong> GitHub repository link<br>
-                <strong>🔍 შეფასების კრიტერიუმები:</strong> კოდის სისუფთავე, ES6 features-ის სწორი გამოყენება,
-                ფუნქციონალურობა
-            </div>
-        </div>
-
-        <!-- Resources -->
-        <div id="resources" class="section">
-            <h2>📚 რესურსები</h2>
-
-            <div class="resources-grid">
-                <div class="resource-card">
-                    <h3>📖 დოკუმენტაცია</h3>
-                    <ul>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions"
-                                target="_blank">MDN - Functions</a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures"
-                                target="_blank">MDN - Closures</a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment"
-                                target="_blank">MDN - Destructuring</a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules"
-                                target="_blank">MDN - Modules</a></li>
-                    </ul>
-                </div>
-
-                <div class="resource-card">
-                    <h3>🎥 ვიდეო მასალები</h3>
-                    <ul>
-                        <li>JavaScript Closures Explained</li>
-                        <li>ES6 Destructuring Tutorial</li>
-                        <li>Arrow Functions vs Regular Functions</li>
-                        <li>JavaScript Modules Complete Guide</li>
-                    </ul>
-                </div>
-
-                <div class="resource-card">
-                    <h3>🛠️ პრაქტიკული ინსტრუმენტები</h3>
-                    <ul>
-                        <li><a href="https://jsbin.com/" target="_blank">JS Bin - ონლაინ კოდ ედიტორი</a></li>
-                        <li><a href="https://codepen.io/" target="_blank">CodePen - ფრონტენდ playground</a></li>
-                        <li><a href="https://javascript.info/" target="_blank">JavaScript.info - სწავლება</a></li>
-                        <li><a href="https://github.com/" target="_blank">GitHub - კოდის შენახვა</a></li>
-                    </ul>
-                </div>
-
-                <div class="resource-card">
-                    <h3>📝 დამატებითი მასალები</h3>
-                    <ul>
-                        <li>ES6 Features Cheat Sheet</li>
-                        <li>Scope and Closures - You Don't Know JS</li>
-                        <li>JavaScript Design Patterns</li>
-                        <li>Clean Code in JavaScript</li>
-                    </ul>
+                    <div class="resource-card">
+                        <h3>🛠️ პრაქტიკული ინსტრუმენტები</h3>
+                        <ul>
+                            <li><a href="https://jsbin.com/" target="_blank">JS Bin - ონლაინ კოდ ედიტორი</a></li>
+                            <li><a href="https://codepen.io/" target="_blank">CodePen - ფრონტენდ playground</a></li>
+                            <li><a href="https://javascript.info/" target="_blank">JavaScript.info - სწავლება</a></li>
+                            <li><a href="https://github.com/" target="_blank">GitHub - კოდის შენახვა</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <!-- Quiz -->
-        <div id="quiz" class="section">
-            <h2>🎉 ქვიზი</h2>
-
-            <div class="theory-box">
-                <h3>📋 ქვიზის ინსტრუქცია</h3>
-                <p>ქვიზი შედგება 15 კითხვისგან და მოიცავს ყველა თემას რაც დღეს შეისწავლეთ. თითოეულ კითხვას აქვს 4
-                    ვარიანტი პასუხი.</p>
-            </div>
-
-            <div class="exercise-box">
-                <div class="exercise-title">❓ კითხვების მაგალითები:</div>
-
-                <p><strong>1. რა არის Closure JavaScript-ში?</strong></p>
-                <ul>
-                    <li>a) ფუნქცია რომელიც იხურება</li>
-                    <li>b) ფუნქცია რომელსაც აქვს წვდომა parent scope-ზე</li>
-                    <li>c) ფუნქცია რომელიც არ იღებს პარამეტრებს</li>
-                    <li>d) ფუნქცია რომელიც აბრუნებს boolean-ს</li>
-                </ul>
-
-                <p><strong>2. რა შედეგი იქნება ამ კოდის?</strong></p>
-                <div class="example-box">
-                    <pre><code>const [a, , c] = [1, 2, 3, 4];
-console.log(a, c);</code></pre>
-                </div>
-                <ul>
-                    <li>a) 1 2</li>
-                    <li>b) 1 3</li>
-                    <li>c) 1 4</li>
-                    <li>d) Error</li>
-                </ul>
-
-                <p><strong>3. Rest operator (...) გამოიყენება:</strong></p>
-                <ul>
-                    <li>a) მხოლოდ ფუნქციის პარამეტრებში</li>
-                    <li>b) მხოლოდ array destructuring-ში</li>
-                    <li>c) ორივეში - ფუნქციის პარამეტრებშიც და destructuring-შიც</li>
-                    <li>d) მხოლოდ ობიექტებთან</li>
-                </ul>
-            </div>
-
-            <div class="highlight">
-                <strong>🏆 ქვიზის შედეგები:</strong><br>
-                • 90-100% - შესანიშნავი!<br>
-                • 70-89% - კარგი შედეგი<br>
-                • 50-69% - საჭიროა დამატებითი შესწავლა<br>
-                • <50% - გავიმეოროთ მასალა </div>
-
-                    <button class="btn" onclick="startQuiz()">🎯 ქვიზის დაწყება</button>
-            </div>
-        </div>
-    </div>
-
 </body>
 
 </html>
